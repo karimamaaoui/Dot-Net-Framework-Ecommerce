@@ -1,0 +1,37 @@
+﻿@model IEnumerable<projetDotNet.Models.Category>
+
+@{
+    ViewData["Title"] = "Liste des Catégories";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    @Html.ActionLink("Créer une nouvelle catégorie", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nom de la catégorie
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => category.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Détails", "Details", new { id = category.CategoryId }) |
+                    @Html.ActionLink("Modifier", "Edit", new { id = category.CategoryId }) |
+                    @Html.ActionLink("Supprimer", "Delete", new { id = category.CategoryId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
